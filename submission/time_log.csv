@@ -1,2 +1,3 @@
 step,images,minutes,note
-gold_manual,4,5.94,"Tao nhan tu anh goc, kiem box, nhap va xuat CVAT; 18:01:11-18:07:08 +07; khong phai phep do toc do gan tay doc lap"
+gold_manual,4,5.94,"Codex (OpenAI): tao box tu anh goc bang Python, kiem overlay, nhap/xuat CVAT; 18:01:11-18:07:08 +07; khong phai thoi gian hoc vien tu gan tay"
+batch_review,24,13.14,"Codex (OpenAI): xem anh va sua pre-label, nhap/xuat CVAT; nghi 0 phut; khong phai thoi gian hoc vien tu review thu cong"
