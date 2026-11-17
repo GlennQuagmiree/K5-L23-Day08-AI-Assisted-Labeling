@@ -1,0 +1,285 @@
+{
+  "img_003.jpg": [
+    {
+      "operation": "update",
+      "id": 8,
+      "box": [
+        336,
+        207,
+        445,
+        358
+      ],
+      "reason": "Mở cạnh trái để bao phần cánh tay nhìn thấy của người lớn ngồi sau trẻ."
+    }
+  ],
+  "img_005.jpg": [
+    {
+      "operation": "update",
+      "id": 68,
+      "box": [
+        274,
+        382,
+        570,
+        925
+      ],
+      "reason": "Box người đội mũ hồng cần bao cả bàn chân nhìn thấy phía dưới."
+    }
+  ],
+  "img_006.jpg": [
+    {
+      "operation": "update",
+      "id": 74,
+      "box": [
+        325,
+        377,
+        515,
+        530
+      ],
+      "reason": "Bao cả bánh sau và gương xe đỗ ở giữa hàng, không chỉ phần yên."
+    },
+    {
+      "operation": "update",
+      "id": 77,
+      "box": [
+        388,
+        352,
+        451,
+        421
+      ],
+      "reason": "Người đang cúi trên xe: bổ sung phần đầu và cánh tay bên phải."
+    },
+    {
+      "operation": "update",
+      "id": 81,
+      "box": [
+        575,
+        365,
+        631,
+        420
+      ],
+      "reason": "Người ngồi sau xe máy: bao cả đầu và vai nhìn thấy."
+    }
+  ],
+  "img_013.jpg": [
+    {
+      "operation": "update",
+      "id": 128,
+      "box": [
+        510,
+        168,
+        578,
+        352
+      ],
+      "reason": "Người mặc áo hồng sau bàn còn thấy phần quần/chân dưới mặt bàn."
+    }
+  ],
+  "img_014.jpg": [
+    {
+      "operation": "update",
+      "id": 140,
+      "box": [
+        594,
+        344,
+        648,
+        454
+      ],
+      "reason": "Box xe máy trắng cần bao bánh trước ở phía dưới."
+    }
+  ],
+  "img_018.jpg": [
+    {
+      "operation": "add",
+      "class": "person",
+      "box": [
+        525,
+        398,
+        542,
+        428
+      ],
+      "reason": "Người mặc đồ trắng đi xe ở giữa nút giao chưa có box person."
+    },
+    {
+      "operation": "add",
+      "class": "person",
+      "box": [
+        788,
+        384,
+        805,
+        421
+      ],
+      "reason": "Người mặc áo xanh trên xe ở phía phải, phía trên người áo tím, chưa có nhãn."
+    },
+    {
+      "operation": "add",
+      "class": "motorbike",
+      "box": [
+        785,
+        403,
+        811,
+        430
+      ],
+      "reason": "Xe dưới người áo xanh bên phải còn thấy thân và bánh, cao trên 20 px."
+    },
+    {
+      "operation": "add",
+      "class": "bicycle",
+      "box": [
+        651,
+        387,
+        672,
+        411
+      ],
+      "reason": "Người áo đỏ ở phía trên đang đi xe đạp, cần nhãn xe riêng."
+    },
+    {
+      "operation": "add",
+      "class": "person",
+      "box": [
+        712,
+        359,
+        727,
+        382
+      ],
+      "reason": "Người đi bộ áo tối màu phía trên người đi xe đạp trắng chưa có box."
+    },
+    {
+      "operation": "update",
+      "id": 174,
+      "box": [
+        524,
+        405,
+        543,
+        431
+      ],
+      "reason": "Xe của người mặc đồ trắng: box cũ chỉ ôm dải hẹp ở giữa."
+    },
+    {
+      "operation": "update",
+      "id": 171,
+      "box": [
+        594,
+        386,
+        611,
+        411
+      ],
+      "reason": "Bao phần bánh xe nhìn thấy dưới người áo vàng."
+    },
+    {
+      "operation": "update",
+      "id": 183,
+      "box": [
+        735,
+        400,
+        760,
+        426
+      ],
+      "reason": "Xe đi ngang bên phải: mở box đến hai bánh nhìn thấy."
+    },
+    {
+      "operation": "update",
+      "id": 194,
+      "box": [
+        631,
+        417,
+        658,
+        446
+      ],
+      "reason": "Box xe ở giữa cần bao cả phần đầu xe nhìn thấy phía trên."
+    }
+  ],
+  "img_024.jpg": [
+    {
+      "operation": "add",
+      "class": "motorbike",
+      "box": [
+        13,
+        581,
+        62,
+        637
+      ],
+      "reason": "Xe dưới người ở góc trái dưới còn thấy rõ và chưa có box xe riêng."
+    },
+    {
+      "operation": "add",
+      "class": "motorbike",
+      "box": [
+        110,
+        575,
+        158,
+        631
+      ],
+      "reason": "Xe dưới người đứng chờ ở trái dưới: bổ sung nhãn phương tiện riêng."
+    },
+    {
+      "operation": "add",
+      "class": "motorbike",
+      "box": [
+        143,
+        520,
+        176,
+        575
+      ],
+      "reason": "Xe có đèn sáng phía sau hai người ở trái dưới chưa có box."
+    },
+    {
+      "operation": "add",
+      "class": "motorbike",
+      "box": [
+        177,
+        515,
+        215,
+        588
+      ],
+      "reason": "Xe bên phải xe đèn sáng ở nhóm trái dưới chưa có box."
+    }
+  ],
+  "img_026.jpg": [
+    {
+      "operation": "update",
+      "id": 392,
+      "box": [
+        99,
+        375,
+        214,
+        477
+      ],
+      "reason": "Box xe đỏ/đen bên trái bị dịch xuống và sang trái; chỉnh theo gương, thân và bánh thật."
+    },
+    {
+      "operation": "update",
+      "id": 384,
+      "box": [
+        518,
+        374,
+        748,
+        537
+      ],
+      "reason": "Xe trắng ở hàng giữa: mở lên phần gương và đầu xe, giữ bánh/thân nhìn thấy."
+    }
+  ],
+  "img_034.jpg": [
+    {
+      "operation": "update",
+      "id": 531,
+      "box": [
+        489,
+        426,
+        537,
+        482
+      ],
+      "reason": "Tách box motorbike khỏi người lái; không gộp moóc hàng rời vào xe máy.",
+      "can_review": true
+    },
+    {
+      "operation": "update",
+      "id": 524,
+      "box": [
+        649,
+        408,
+        747,
+        479
+      ],
+      "reason": "Xe đỗ cạnh moóc: thêm phần tay lái nhìn thấy bên trái."
+    }
+  ]
+}

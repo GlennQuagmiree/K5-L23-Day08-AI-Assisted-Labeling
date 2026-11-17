@@ -1,0 +1,17 @@
+{
+  "seed": 2026111701,
+  "review_started_utc": "2026-11-17T11:56:39.820937+00:00",
+  "source_sha256": "75a319f2fdc6613776473a1e072cce4dbd1c5a7008b30c8124d257e5f713e956",
+  "method": "New-seed visual review on the same familiar 24 images, using the same tool-assisted workflow. Key unopened until review freeze; no baseline-label diff used while reviewing; no independent human reviewer.",
+  "review_frozen_utc": "2026-11-17T11:58:30.438008+00:00",
+  "reviewed_sha256": "d84e136dfff4913f72e1639b2fd4dfd5a0c60f1198fb2943ee1739542c0af840",
+  "key_opened_after_grading_utc": "2026-11-17T11:59:44.416276+00:00",
+  "blind_result": {
+    "caught": 10,
+    "total": 12
+  },
+  "qc_seed": 73,
+  "qc_completed_utc": "2026-11-17T12:00:56.359056+00:00",
+  "release_sha256": "ff0b6a8b0ae94d69ca1b4e2472e77887a81cbf57c2d806ec9bc2079639aee6c3",
+  "qc_review_sha256": "7dbff029ab1ade93c044a80b42b79030411b87508ff9ccca2ae17266a59c7071"
+}

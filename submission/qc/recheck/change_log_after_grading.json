@@ -1,0 +1,96 @@
+{
+  "source_sha256": "d84e136dfff4913f72e1639b2fd4dfd5a0c60f1198fb2943ee1739542c0af840",
+  "changes": [
+    {
+      "image": "img_018.jpg",
+      "operation": "delete",
+      "reason": "QC sau chấm: box person mới trùng với person #202 đang có; giữ một box cho một người.",
+      "before": {
+        "id": 573,
+        "image_id": 11,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": false
+        },
+        "bbox": [
+          819,
+          513,
+          29,
+          44
+        ],
+        "area": 1276
+      },
+      "after": null
+    },
+    {
+      "image": "img_018.jpg",
+      "operation": "update",
+      "reason": "QC sau chấm: box xe máy bị dịch lên trên người; đưa về đúng thân và bánh xe.",
+      "before": {
+        "id": 208,
+        "image_id": 11,
+        "category_id": 3,
+        "bbox": [
+          821.43,
+          514.63,
+          35.67,
+          56.36
+        ],
+        "area": 2010.36,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.83",
+          "can_review": "false"
+        },
+        "score": 0.83
+      },
+      "after": {
+        "id": 208,
+        "image_id": 11,
+        "category_id": 3,
+        "bbox": [
+          811,
+          527,
+          46,
+          50
+        ],
+        "area": 2300,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.83",
+          "can_review": "false"
+        },
+        "score": 0.83
+      }
+    },
+    {
+      "image": "img_021.jpg",
+      "operation": "add",
+      "reason": "QC sau chấm: ô tô trắng/vàng ở sau xe máy trung tâm bị thiếu nhãn.",
+      "before": null,
+      "after": {
+        "id": 575,
+        "image_id": 12,
+        "category_id": 4,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": false
+        },
+        "bbox": [
+          314,
+          337,
+          47,
+          42
+        ],
+        "area": 1974
+      }
+    }
+  ]
+}

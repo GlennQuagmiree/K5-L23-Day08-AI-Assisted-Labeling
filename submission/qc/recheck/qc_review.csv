@@ -1,0 +1,9 @@
+image,object_id,error_type,reviewer,note
+img_005.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,"Đã đối chiếu người ngồi sau, bàn chân và nhãn xe riêng; chưa ghi nhận lỗi còn lại trong lượt kiểm này."
+img_008.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,Giữ người bán; không gán các xe đẩy hai bánh thành three_wheeler. Người áo hoa đã có nhãn riêng.
+img_009.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,Xe trắng phía sau là motorbike; xe đạp phía sau và xe chở chuối tách riêng. Chưa ghi nhận lỗi thêm.
+img_013.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,Kiểm người đứng/ngồi và các xe phía sau; giữ bus ở nền dù đáp án bẫy gốc ghi truck. Chưa ghi nhận lỗi thêm.
+img_018.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,Đã sửa box xe #208 và bỏ person trùng; quét người/xe giữa nút giao. Chưa ghi nhận lỗi còn lại.
+img_023.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,"Ba tuk-tuk được gán riêng, có nhãn người nhìn thấy; kiểm vật cắt mép ảnh. Chưa ghi nhận lỗi thêm."
+img_028.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,"Đối chiếu hàng xe, người ngồi sau và ô tô phía sau. Chưa ghi nhận lỗi thêm trong lượt kiểm này."
+img_029.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt kiểm tra lại,"Kiểm người và xe trong cảnh đêm, vật cắt mép và lớp ô tô. Chưa ghi nhận lỗi thêm trong lượt kiểm này."

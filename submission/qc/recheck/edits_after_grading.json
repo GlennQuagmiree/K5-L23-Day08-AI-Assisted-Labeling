@@ -1,0 +1,33 @@
+{
+  "img_018.jpg": [
+    {
+      "operation": "delete",
+      "id": 573,
+      "reason": "QC sau chấm: box person mới trùng với person #202 đang có; giữ một box cho một người."
+    },
+    {
+      "operation": "update",
+      "id": 208,
+      "box": [
+        811,
+        527,
+        857,
+        577
+      ],
+      "reason": "QC sau chấm: box xe máy bị dịch lên trên người; đưa về đúng thân và bánh xe."
+    }
+  ],
+  "img_021.jpg": [
+    {
+      "operation": "add",
+      "class": "car",
+      "box": [
+        314,
+        337,
+        361,
+        379
+      ],
+      "reason": "QC sau chấm: ô tô trắng/vàng ở sau xe máy trung tâm bị thiếu nhãn."
+    }
+  ]
+}

@@ -26,6 +26,8 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--max-hard", type=int, default=3, help="tối đa bao nhiêu ảnh `can_review` đưa vào mẫu (lấy ảnh có nhiều box can_review nhất)")
     ap.add_argument("--force", action="store_true", help="ghi đè qc_review.csv đã có (CẨN THẬN: mất phần đã điền)")
+    ap.add_argument("--out-dir", type=Path, default=SUB / "qc", help="lưu lượt QC riêng, giữ nguyên lượt trước")
+    ap.add_argument("--viz-out", type=Path, default=WORK / "qc" / "review")
     a = ap.parse_args()
     tax = load_taxonomy()
     p = Path(a.src)
@@ -43,9 +45,9 @@ def main() -> None:
     rnd = sorted(random.Random(a.seed).sample(pool, k))
     sample = sorted(set(hard) | set(rnd))
     nobj = lambda n: sum(1 for o in cs.objects[n] if o.cls != tax.ignore)  # noqa: E731
-    write_csv(SUB / "qc" / "qc_sample.csv", ["image", "la_ca_kho", "so_doi_tuong"],
+    write_csv(a.out_dir / "qc_sample.csv", ["image", "la_ca_kho", "so_doi_tuong"],
               [{"image": n, "la_ca_kho": "yes" if n in hard else "no", "so_doi_tuong": nobj(n)} for n in sample])
-    rv = SUB / "qc" / "qc_review.csv"
+    rv = a.out_dir / "qc_review.csv"
     if rv.exists() and not a.force:
         print(f"Giữ nguyên {rel(rv)} (đã tồn tại; dùng --force để tạo lại).")
     else:
@@ -53,7 +55,7 @@ def main() -> None:
                   [{"image": n, "object_id": "", "error_type": "", "reviewer": "", "note": ""} for n in sample])
         print(f"Đã tạo phiếu kiểm {rel(rv)}.")
     from viz import draw_image
-    out = WORK / "qc" / "review"
+    out = a.viz_out
     out.mkdir(parents=True, exist_ok=True)
     for n in sample:
         draw_image(IMAGES_DIR / n, cs.objects[n], tax, show_ids=True).save(out / (Path(n).stem + ".jpg"), quality=88)

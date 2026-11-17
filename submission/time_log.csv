@@ -1,1 +1,3 @@
 step,images,minutes,note
+gold_manual,4,5.94,"Tạo box từ ảnh gốc bằng Python, kiểm overlay, nhập/xuất CVAT; 18:01:11-18:07:08 +07; thời gian toàn quy trình có công cụ hỗ trợ, không phải phép đo gán tay độc lập"
+batch_review,24,13.14,"Xem ảnh, chỉnh pre-label và nhập/xuất CVAT; nghỉ 0 phút; thời gian toàn quy trình có công cụ hỗ trợ"

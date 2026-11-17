@@ -2,13 +2,20 @@
   <img src="docs/assets/hero.png" alt="Day 08 Lab: AI hỗ trợ gán nhãn" width="100%">
 </p>
 
-# Day 08 Lab — AI hỗ trợ gán nhãn: Pre-label, Review, Calibration
+# Day 08 Lab — 2A202603271 - Hà Huy Dũng
+
+## Bài nộp hiện tại
+
+- [Báo cáo](submission/REPORT.md) · [Thông tin và kết quả](STUDENT.md) · [Hồ sơ kiểm tra lại](submission/qc/recheck/README.md).
+- Bản cuối: **24 ảnh, 571 hình** (559 vật + 12 ignore_region).
+- Lượt kiểm tra lại: **10/12 bẫy = 83,3%**; QC sau sửa chưa ghi nhận lỗi trên **8 ảnh / 206 đối tượng**.
+- Quyết định: **Release sau rework theo ngưỡng quan sát**. Giữ riêng số đo lượt đầu; giới hạn mẫu nhỏ và việc chưa có người kiểm độc lập được trình bày trong báo cáo.
 
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
   <img alt="thời lượng" src="https://img.shields.io/badge/thời%20lượng-4%20giờ-ff8a3d">
   <img alt="ảnh" src="https://img.shields.io/badge/dữ%20liệu-36%20ảnh-12b3a8">
-  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
+  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
   <img alt="gpu" src="https://img.shields.io/badge/GPU-không%20bắt%20buộc-2fbf71">
   <a href="https://colab.research.google.com/github/VinUni-AI20k/K5-L23-Day08-AI-Assisted-Labeling/blob/main/notebooks/day08_colab.ipynb"><img alt="Mở trong Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 </p>

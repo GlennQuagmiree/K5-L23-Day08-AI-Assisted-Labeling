@@ -209,7 +209,7 @@ def main():
          f"- Ảnh tính: {len(imgs)} ({a.splits}); box máy: {n_pre}; đối tượng sau duyệt: {n_final}; "
          f"ngưỡng accepted: IoU >= {acc_thr}",
          (f"- Đã **loại {n_trap_excl} đối tượng nằm quanh các bẫy** khỏi bảng này: lỗi nhân tạo không phản ánh chất lượng máy." if trap_boxes else ""), "",
-         "## 1. Bốn trạng thái (AI error profile)", "| Trạng thái | Số | Tỉ lệ | Mẫu số |", "|---|---|---|---|",
+         "## 1. Bốn trạng thái (hồ sơ lỗi mô hình)", "| Trạng thái | Số | Tỉ lệ | Mẫu số |", "|---|---|---|---|",
          f"| accepted (giữ nguyên) | {acc} | {pc(acc, n_pre)} | {n_pre} box máy |",
          f"| edited (sửa) | {edi} | {pc(edi, n_pre)} | {n_pre} box máy |",
          f"| deleted (xoá) | {dele} | {pc(dele, n_pre)} | {n_pre} box máy |",
