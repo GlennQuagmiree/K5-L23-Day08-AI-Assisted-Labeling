@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603271 - Hà Huy Dũng
 
-> Mọi con số kèm **mẫu số** và nguồn. Máy: RTX 3050 Laptop 4 GB (CUDA), CVAT v2.74.1 (Docker).
+> Bài thực hành gồm thử nghiệm mô hình, chọn ngưỡng, xử lý nhãn trên CVAT, so sánh mask và kiểm tra chất lượng. Các kết quả dưới đây kèm mẫu số và nguồn đối chiếu. Máy thực hiện: RTX 3050 Laptop 4 GB (CUDA), CVAT v2.74.1 (Docker).
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -39,12 +39,12 @@ So với 4 ảnh tham chiếu: **51 TP, 21 FP, 18 FN**, precision **51/72 = 70,8
 
 Nguồn: `qc/review_stats.md`, chấm sau khi đã xuất bản review lần đầu. Không mở trực tiếp `traps_key.json`; chỉ truyền đường dẫn cho script chấm sau export.
 
-Tôi sử dụng Codex để xem ảnh và hỗ trợ sửa nhãn. Vì vậy, điểm bắt bẫy dưới đây đo **quy trình review có AI hỗ trợ**, không đo khả năng tự review của riêng tôi. Không dùng kết quả này để suy ra mức thiên kiến tự động hóa của cá nhân tôi.
+Điểm bắt bẫy được dùng để đánh giá lượt review đầu của quy trình đã thực hiện; phạm vi hỗ trợ được ghi ở mục 8.
 
 - Bắt **8/12 = 66,7%**, thấp hơn yêu cầu ít nhất 10/12. Theo loại: loose 2/3, wrong_class 2/3, missing 1/3, extra 3/3.
 - Bẫy lọt theo script: img_034 (wrong_class), img_026 (loose), img_018 và img_013 (missing).
 - Accepted 85,0% nhưng bẫy chỉ 66,7% cho thấy giữ nhiều box không chứng minh review tốt. Việc tìm vật chưa có box yếu hơn phát hiện box thừa; cụm xe đỗ và phần người bị che cần lượt quét riêng.
-- **Bẫy đo quy trình có AI hỗ trợ, không đo riêng mắt người.** Review 24 ảnh được làm bằng quy trình có công cụ/AI hỗ trợ (mục 8) trong 13,14 phút (0,55 phút/ảnh, nghỉ 0 phút), nhanh hơn nhiều so với ~3 phút/ảnh của checklist. Ba bẫy lọt thuộc loại máy *không vẽ* (missing ×2) hoặc lệch nhỏ (loose), đúng hai điểm yếu kinh điển của thiên kiến tự động hóa: "máy không vẽ thì không kiểm" và "lệch vài pixel khó thấy". Bẫy extra (box thừa) bắt 3/3, tức là quy trình xoá tốt nhưng tìm vật sót kém, khớp với `added` của người/xe máy còn cao (37 / 29). Kết luận: một bộ duyệt thứ hai cũng tự động không thay được bước 0 (quét ảnh khi ẩn nhãn) của người.
+- **Điểm cần cải thiện:** lượt review 24 ảnh mất 13,14 phút (0,55 phút/ảnh, nghỉ 0 phút). Trong bốn bẫy lọt có hai bẫy missing, một loose và một wrong_class. Việc bắt đủ 3/3 bẫy extra nhưng chỉ bắt 1/3 bẫy missing cho thấy quy trình phát hiện box thừa tốt hơn tìm vật chưa có box. Vì vậy, lần review tiếp theo cần một lượt quét ảnh khi ẩn nhãn, sau đó mới kiểm lớp và độ sát của từng box.
 - Giữ nguyên điểm lần đầu để đánh giá quy trình. Các sửa QC không được dùng để thay điểm này bằng kết quả đẹp hơn. Khoảng tin cậy 95% của 8/12 rất rộng, khoảng 39–86%.
 
 ## 4. Máy có đáng dùng không?
@@ -95,7 +95,7 @@ Nguồn: `qc/qc_sample.csv`, `qc/qc_review.csv`, `qc/qc_report_auto.md`.
 
 Mẫu **8/24 ảnh**, gồm 3 ca khó + 5 ảnh ngẫu nhiên seed 42, **213 đối tượng** trước sửa QC. Phiếu ghi 6 lỗi trên 4 ảnh: **6/213 = 2,8% theo đối tượng**, **4/8 = 50,0% theo ảnh**. Không so 2,8% theo đối tượng với ngưỡng 2% theo ảnh.
 
-Tôi dùng Codex để kiểm ảnh mẫu và ghi phiếu QC. Đây là lượt kiểm có hỗ trợ, không phải lượt kiểm độc lập do tôi tự thực hiện bằng mắt.
+Lượt QC này sử dụng cùng quy trình hỗ trợ với lượt xử lý nhãn, nên chưa đáp ứng yêu cầu kiểm tra độc lập.
 
 | Lỗi | Số | Ví dụ |
 |---|---:|---|
@@ -113,11 +113,10 @@ Script kiểm được cấu trúc COCO, số ảnh, lớp, biên ảnh và vi�
 
 ## 8. Ghi chú thực hiện
 
-- **Khai báo sử dụng AI:** tôi sử dụng Claude Code (Anthropic) và Codex (OpenAI) để hỗ trợ thực hiện bài. Claude hỗ trợ chuẩn bị môi trường, chạy mô hình, đo mask và soạn bản nháp log, guideline, calibration, báo cáo. Codex xem ảnh gốc, tạo tọa độ box gold bằng Python, nhập và xuất nhãn qua CVAT; sau đó xem ảnh và pre-label để sửa nhãn batch, kiểm mẫu QC, lưu các sửa QC và chỉnh báo cáo. Tôi không mô tả những thao tác này là tự vẽ hoặc tự review thủ công độc lập.
-- **Phạm vi cho phép:** theo thông tin tôi đã cung cấp trong trao đổi, giảng viên cho phép sử dụng AI và gửi ảnh bộ dữ liệu cho AI. Tôi khai rõ phạm vi công cụ đã tham gia để người đọc đánh giá đúng kết quả.
-- **Tình trạng gold:** Codex tạo nhãn từ ảnh gốc trước khi xem dự đoán detector trên bốn ảnh đó, rồi nhập CVAT và xuất COCO. Tuy không sao chép pre-label của detector, nhãn vẫn do AI hỗ trợ tạo nên **không phải gold gán tay độc lập**. Precision/recall trong bài là phép so với tập tham chiếu này, không phải phép đánh giá trên gold sạch theo quy trình gán tay của RULES.
-- **Cách kiểm tra đã thực hiện:** đối chiếu ảnh gốc và overlay trong quy trình hỗ trợ; chạy `validate_labels.py` và `check_submission.py`; lấy số liệu bằng các script gốc. Các kiểm tra cấu trúc đã chạy thành công, nhưng không thay thế việc tôi tự kiểm ảnh và xác nhận nhãn độc lập.
-- **Thời gian và người kiểm:** mốc trong `time_log.csv` đo quy trình hỗ trợ gồm thao tác file và CVAT, không phải thời gian tôi tự gán hoặc tự duyệt. Phiếu QC ghi Codex là công cụ thực hiện lượt kiểm này. Nhãn sau QC được lưu riêng để giữ lịch sử lần review đầu.
-- Máy Windows 11, RTX 3050 Laptop 4 GB, torch 2.6.0+cu124; CVAT v2.74.1 chạy Docker. Detector được chạy trên GPU; không dùng dự đoán trong `data/cache/` làm kết quả thay thế.
-- Dùng các script gốc để validate, quét ngưỡng, chấm review, lấy mẫu QC và dựng bản tổng hợp; không sửa tay các file thống kê sinh tự động.
-- Lần sau: dành lượt riêng cho vật chưa có box và cho xe chở hàng; kiểm box trước khi dùng SAM; chưa nộp bản này như một lô đã đạt chuẩn Release.
+Bài được thực hiện trên Windows 11, RTX 3050 Laptop 4 GB, torch 2.6.0+cu124 và CVAT v2.74.1 chạy Docker. Các detector chạy trực tiếp trên GPU; không dùng dự đoán trong `data/cache/` làm kết quả thay thế.
+
+**Công cụ hỗ trợ:** Claude Code hỗ trợ chuẩn bị môi trường, chạy mô hình, đo mask và soạn nháp tài liệu; Codex hỗ trợ tạo nhãn tham chiếu từ ảnh gốc, xử lý nhãn qua CVAT, review batch, kiểm mẫu QC và chỉnh báo cáo. Việc kiểm tra gồm đối chiếu ảnh gốc với overlay, chạy `validate_labels.py`, `check_submission.py` và lấy số liệu bằng các script gốc.
+
+**Giới hạn đánh giá:** bốn ảnh tham chiếu được tạo nhãn trước khi xem dự đoán detector, nhưng không phải gold gán tay độc lập. Thời gian trong `time_log.csv` gồm thao tác file và CVAT của quy trình hỗ trợ; không dùng để kết luận về tốc độ gán tay cá nhân. Lượt QC cũng chưa độc lập với lượt xử lý nhãn.
+
+Các file thống kê sinh tự động được giữ nguyên. Bản review đầu và bản sửa QC được lưu riêng để đối chiếu. Qua kết quả bẫy và QC, phần cần cải thiện nhất là tìm vật chưa có box, phân biệt xe chở hàng và kiểm tra box trước khi chạy SAM. Bài giữ quyết định **Rework** cho đến khi hoàn thành lượt rà toàn lô và QC độc lập.

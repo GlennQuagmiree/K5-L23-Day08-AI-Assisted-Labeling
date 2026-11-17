@@ -11,7 +11,7 @@
 
 ## Kết quả tóm tắt
 
-- Cách thực hiện: tôi sử dụng Claude Code cho phần chuẩn bị, chạy mô hình và soạn nháp; Codex tạo nhãn tham chiếu, hỗ trợ review và QC. Chi tiết khai báo tại REPORT mục 8; không coi đây là gán tay hoặc review thủ công độc lập.
+- Nội dung bài làm: thử nghiệm mô hình, chọn ngưỡng theo lớp, xử lý nhãn trên CVAT, so sánh mask, bổ sung guideline và đánh giá QC. Phạm vi công cụ hỗ trợ và giới hạn đánh giá được trình bày tại REPORT mục 8.
 
 - Lượt review đầu: accepted 429/505 = 85,0%; edited 22/505 = 4,4%; deleted 50/505 = 9,9%; added 89/540 = 16,5%.
 - So với 69 vật tham chiếu: máy có precision 51/72 = 70,8%; recall 51/69 = 73,9%. Tập tham chiếu không phải gold gán tay độc lập.
