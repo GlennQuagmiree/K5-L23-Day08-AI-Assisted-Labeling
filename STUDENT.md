@@ -5,7 +5,7 @@
 - Lớp (L2 / L3 / khác): L2
 - Tài khoản GitHub: hdung25
 - Repo bài nộp (URL): https://github.com/hdung25/K5-L2-Day08-HaHuyDung-2A202603271-AI-Assisted-Labeling
-- Commit chốt bài (hash): 2605449f048cb4aa8c87a40e1c05e8fa53e539bd (nội dung bài; commit sau chỉ điền dòng này)
+- Commit chốt bài (hash): aa9f68d983f65c701c522d8079db490bef1a49d8 (bản nội dung sau rework; commit sau chỉ cập nhật dòng này)
 - Máy: Windows 11 Home, GPU NVIDIA GeForce RTX 3050 Laptop 4 GB (CUDA, torch 2.6.0+cu124), Python 3.11.9
 - CVAT (Docker): v2.74.1 (Docker Desktop, WSL2)
 
