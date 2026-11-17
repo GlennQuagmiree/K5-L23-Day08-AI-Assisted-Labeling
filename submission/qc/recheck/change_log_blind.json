@@ -1,0 +1,365 @@
+{
+  "source_sha256": "75a319f2fdc6613776473a1e072cce4dbd1c5a7008b30c8124d257e5f713e956",
+  "changes": [
+    {
+      "image": "img_008.jpg",
+      "operation": "add",
+      "reason": "Người đội nón lá, áo hoa cạnh người đội mũ xanh bị thiếu nhãn.",
+      "before": null,
+      "after": {
+        "id": 572,
+        "image_id": 5,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": false
+        },
+        "bbox": [
+          533,
+          207,
+          93,
+          125
+        ],
+        "area": 11625
+      }
+    },
+    {
+      "image": "img_009.jpg",
+      "operation": "update",
+      "reason": "Xe màu trắng có động cơ, yếm và yên xe máy; sửa bicycle thành motorbike.",
+      "before": {
+        "id": 112,
+        "image_id": 6,
+        "category_id": 2,
+        "bbox": [
+          292.32,
+          295.9,
+          155.88,
+          110.72
+        ],
+        "area": 17259.03,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.66",
+          "can_review": "false"
+        },
+        "score": 0.66
+      },
+      "after": {
+        "id": 112,
+        "image_id": 6,
+        "category_id": 3,
+        "bbox": [
+          292.32,
+          295.9,
+          155.88,
+          110.72
+        ],
+        "area": 17259.03,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.66",
+          "can_review": "false"
+        },
+        "score": 0.66
+      }
+    },
+    {
+      "image": "img_010.jpg",
+      "operation": "update",
+      "reason": "Người đạp xích lô áo trắng: box bị dịch xuống/phải, thiếu đầu và chân trái.",
+      "before": {
+        "id": 122,
+        "image_id": 7,
+        "category_id": 1,
+        "bbox": [
+          293.17,
+          292.9,
+          129.0,
+          401.1
+        ],
+        "area": 51741.9,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.86",
+          "can_review": "false"
+        },
+        "score": 0.86
+      },
+      "after": {
+        "id": 122,
+        "image_id": 7,
+        "category_id": 1,
+        "bbox": [
+          252,
+          245,
+          186,
+          432
+        ],
+        "area": 80352,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.86",
+          "can_review": "false"
+        },
+        "score": 0.86
+      }
+    },
+    {
+      "image": "img_017.jpg",
+      "operation": "delete",
+      "reason": "Box truck nằm trên biển/khung nhà, không có xe tải.",
+      "before": {
+        "id": 158,
+        "image_id": 10,
+        "category_id": 6,
+        "bbox": [
+          153.59,
+          57.32,
+          91.04,
+          76.11
+        ],
+        "area": 6929.05,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.74",
+          "can_review": "false"
+        },
+        "score": 0.74
+      },
+      "after": null
+    },
+    {
+      "image": "img_018.jpg",
+      "operation": "add",
+      "reason": "Người lái xe áo tối phía phải dưới chưa có box riêng.",
+      "before": null,
+      "after": {
+        "id": 573,
+        "image_id": 11,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": false
+        },
+        "bbox": [
+          819,
+          513,
+          29,
+          44
+        ],
+        "area": 1276
+      }
+    },
+    {
+      "image": "img_024.jpg",
+      "operation": "delete",
+      "reason": "Box motorbike trên mảng cây và công trình phía trái trên không tương ứng vật.",
+      "before": {
+        "id": 360,
+        "image_id": 15,
+        "category_id": 3,
+        "bbox": [
+          9.2,
+          96.43,
+          69.27,
+          78.27
+        ],
+        "area": 5421.76,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.68",
+          "can_review": "false"
+        },
+        "score": 0.68
+      },
+      "after": null
+    },
+    {
+      "image": "img_025.jpg",
+      "operation": "add",
+      "reason": "Người áo trắng cầm điện thoại phía phải chưa có nhãn person.",
+      "before": null,
+      "after": {
+        "id": 574,
+        "image_id": 16,
+        "category_id": 1,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": false
+        },
+        "bbox": [
+          809,
+          173,
+          92,
+          263
+        ],
+        "area": 24196
+      }
+    },
+    {
+      "image": "img_026.jpg",
+      "operation": "update",
+      "reason": "Box xe ở đầu hàng bên phải đặt cao trên thân xe; hạ và ôm phần thân/bánh nhìn thấy.",
+      "before": {
+        "id": 381,
+        "image_id": 17,
+        "category_id": 3,
+        "bbox": [
+          822.54,
+          312.97,
+          47.61,
+          59.02
+        ],
+        "area": 2809.94,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": "false"
+        }
+      },
+      "after": {
+        "id": 381,
+        "image_id": 17,
+        "category_id": 3,
+        "bbox": [
+          818,
+          328,
+          46,
+          51
+        ],
+        "area": 2346,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "",
+          "can_review": "false"
+        }
+      }
+    },
+    {
+      "image": "img_031.jpg",
+      "operation": "update",
+      "reason": "Người đàn ông ngồi bên phải là person, không phải bicycle.",
+      "before": {
+        "id": 497,
+        "image_id": 21,
+        "category_id": 2,
+        "bbox": [
+          902.87,
+          206.27,
+          120.94,
+          309.62
+        ],
+        "area": 37445.44,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.93",
+          "can_review": "false"
+        },
+        "score": 0.93
+      },
+      "after": {
+        "id": 497,
+        "image_id": 21,
+        "category_id": 1,
+        "bbox": [
+          902.87,
+          206.27,
+          120.94,
+          309.62
+        ],
+        "area": 37445.44,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.93",
+          "can_review": "false"
+        },
+        "score": 0.93
+      }
+    },
+    {
+      "image": "img_033.jpg",
+      "operation": "delete",
+      "reason": "Box car bao biển hàng và khoảng trống phía trên mặt đường, không có ô tô.",
+      "before": {
+        "id": 516,
+        "image_id": 22,
+        "category_id": 4,
+        "bbox": [
+          336.45,
+          382.86,
+          178.7,
+          96.42
+        ],
+        "area": 17230.25,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.49",
+          "can_review": "false"
+        },
+        "score": 0.49
+      },
+      "after": null
+    },
+    {
+      "image": "img_035.jpg",
+      "operation": "update",
+      "reason": "Người mặc áo trắng đứng giữa ảnh là person, không phải bicycle.",
+      "before": {
+        "id": 569,
+        "image_id": 24,
+        "category_id": 2,
+        "bbox": [
+          354.47,
+          442.14,
+          94.34,
+          199.39
+        ],
+        "area": 18810.45,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.92",
+          "can_review": "false"
+        },
+        "score": 0.92
+      },
+      "after": {
+        "id": 569,
+        "image_id": 24,
+        "category_id": 1,
+        "bbox": [
+          354.47,
+          442.14,
+          94.34,
+          199.39
+        ],
+        "area": 18810.45,
+        "iscrowd": 0,
+        "segmentation": [],
+        "attributes": {
+          "conf": "0.92",
+          "can_review": "false"
+        },
+        "score": 0.92
+      }
+    }
+  ]
+}

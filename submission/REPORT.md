@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603271 - Hà Huy Dũng
 
-> Bài thực hành gồm thử nghiệm mô hình, chọn ngưỡng, xử lý nhãn trên CVAT, so sánh mask và kiểm tra chất lượng. Các kết quả dưới đây kèm mẫu số và nguồn đối chiếu. Máy thực hiện: RTX 3050 Laptop 4 GB (CUDA), CVAT v2.74.1 (Docker).
+> Trong bài thực hành, tôi thử nghiệm mô hình, chọn ngưỡng, tổ chức xử lý nhãn trên CVAT, so sánh mask và kiểm tra chất lượng. Các kết quả dưới đây kèm mẫu số và nguồn đối chiếu. Máy thực hiện: RTX 3050 Laptop 4 GB (CUDA), CVAT v2.74.1 (Docker).
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -37,7 +37,7 @@ So với 4 ảnh tham chiếu: **51 TP, 21 FP, 18 FN**, precision **51/72 = 70,8
 
 ## 3. Thiên kiến tự động hóa và ảnh bẫy
 
-Nguồn: `qc/review_stats.md`, chấm sau khi đã xuất bản review lần đầu. Không mở trực tiếp `traps_key.json`; chỉ truyền đường dẫn cho script chấm sau export.
+Nguồn lượt đầu: `qc/review_stats.md`, chấm sau khi đã xuất nhãn. Đáp án chỉ được dùng khi chấm sau export. Kết quả lượt đầu được giữ riêng với lượt kiểm tra lại dưới đây.
 
 Điểm bắt bẫy được dùng để đánh giá lượt review đầu của quy trình đã thực hiện; phạm vi hỗ trợ được ghi ở mục 8.
 
@@ -47,11 +47,15 @@ Nguồn: `qc/review_stats.md`, chấm sau khi đã xuất bản review lần đ�
 - **Điểm cần cải thiện:** lượt review 24 ảnh mất 13,14 phút (0,55 phút/ảnh, nghỉ 0 phút). Trong bốn bẫy lọt có hai bẫy missing, một loose và một wrong_class. Việc bắt đủ 3/3 bẫy extra nhưng chỉ bắt 1/3 bẫy missing cho thấy quy trình phát hiện box thừa tốt hơn tìm vật chưa có box. Vì vậy, lần review tiếp theo cần một lượt quét ảnh khi ẩn nhãn, sau đó mới kiểm lớp và độ sát của từng box.
 - Giữ nguyên điểm lần đầu để đánh giá quy trình. Các sửa QC không được dùng để thay điểm này bằng kết quả đẹp hơn. Khoảng tin cậy 95% của 8/12 rất rộng, khoảng 39–86%.
 
+**Lượt kiểm tra lại sau rework:** tôi dùng một bộ 12 bẫy mới, seed `2026111701`, trên nhãn đã rà của cùng 24 ảnh. Nhãn được chốt trước khi chấm và mở đáp án, không so sánh file với bản nền trong lúc duyệt. Kết quả tại `qc/recheck/review_stats.json`: **10/12 = 83,3%**, đạt ngưỡng 80%; wrong_class 3/3, extra 3/3, missing 2/3, loose 2/3. Hai bẫy lọt là car ở img_021 và box motorbike ở img_018; đã sửa sau khi chấm, giữ nguyên điểm 10/12. Đây là phép kiểm tra lại trên ảnh đã quen, không thay thế kết quả 8/12 của lượt đầu.
+
+Box car thừa trên vùng nhà của img_033 (ID 516 trong lượt bẫy mới) đã được xóa. Một bẫy gốc ở img_013 dùng lớp truck cho xe khách; tôi giữ bus theo ảnh và guideline, không đổi lớp để khớp đáp án.
+
 ## 4. Máy có đáng dùng không?
 
 Nguồn `time_log.csv`: tạo nhãn tham chiếu và nhập/xuất CVAT **5,94 phút / 4 ảnh = 1,49 phút/ảnh**; review và nhập/xuất **13,14 phút / 24 ảnh = 0,55 phút/ảnh**, nghỉ 0 phút. Đồng hồ gồm thao tác file và CVAT. Đây là quy trình hỗ trợ; **không phải phép đo tốc độ gán tay hoặc review thủ công độc lập**. Không dùng tỉ số khoảng 2,71 lần để khẳng định máy nhanh hơn con người. Hai tập ảnh khác nhau và làm gold trước cũng tạo hiệu ứng quen cảnh.
 
-Kết luận: pre-label hữu ích như bản nháp cho các lớp COCO và gợi ý xe ba bánh, nhưng lô này chưa đạt điều kiện phát hành. Không dùng conf hay accepted làm tiêu chí tự chấp nhận.
+Kết luận: pre-label hữu ích như bản nháp cho các lớp COCO và gợi ý xe ba bánh. Lượt đầu cần Rework; bản sau sửa đạt các ngưỡng quan sát của lượt kiểm tra lại ở mục 7. Không dùng conf hay accepted làm tiêu chí tự chấp nhận.
 
 Ba quy tắc kiểm tra được cho lần tiếp theo:
 1. Quét ảnh khi chưa hiện box, lập số đếm người và xe trước khi so với nhãn; mỗi ảnh phải có mục đối chiếu số đếm.
@@ -91,32 +95,28 @@ Không đổi các ngưỡng trong `taxonomy.json.rules`. Các ví dụ giúp c�
 
 ## 7. QC và quyết định
 
-Nguồn: `qc/qc_sample.csv`, `qc/qc_review.csv`, `qc/qc_report_auto.md`.
+**Lượt đầu — Rework.** Nguồn: `qc/qc_sample.csv`, `qc/qc_review.csv`, `qc/qc_report_auto.md`. Mẫu 8/24 ảnh gồm 3 ca khó + 5 ngẫu nhiên seed 42, có 213 đối tượng. Phát hiện **6/213 = 2,8% đối tượng lỗi**, trên **4/8 = 50,0% ảnh**: ba sai lớp ở img_008, hai box chưa sát ở img_005/img_010 và một xe máy bỏ sót ở img_018. Tôi giữ nguyên các số này để đối chiếu; bản sửa cục bộ khi đó có 562 hình.
 
-Mẫu **8/24 ảnh**, gồm 3 ca khó + 5 ảnh ngẫu nhiên seed 42, **213 đối tượng** trước sửa QC. Phiếu ghi 6 lỗi trên 4 ảnh: **6/213 = 2,8% theo đối tượng**, **4/8 = 50,0% theo ảnh**. Không so 2,8% theo đối tượng với ngưỡng 2% theo ảnh.
+**Rà toàn lô.** Tôi rà lại đủ 24 ảnh bằng ảnh gốc và overlay, rồi ghi 24 thay đổi trên 9 ảnh vào `qc/rework/edits.json` và `change_log.json`. Các sửa gồm bổ sung người/xe còn thiếu, chỉnh box và tách phần xe khỏi người lái. Tôi tiếp tục duyệt bộ bẫy mới ở mục 3. Sau khi chốt điểm, tôi sửa hai bẫy lọt và bỏ một box person trùng tại img_018; các thay đổi sau chấm được lưu riêng trong `qc/recheck/edits_after_grading.json`.
 
-Lượt QC này sử dụng cùng quy trình hỗ trợ với lượt xử lý nhãn, nên chưa đáp ứng yêu cầu kiểm tra độc lập.
+**QC sau sửa.** Nguồn: `qc/recheck/qc_sample.csv`, `qc_review.csv`, `qc_report_auto.md`. Mẫu được lấy lại từ bản nhãn cuối, seed **73**, gồm **3 ca khó + 5 ngẫu nhiên**, **8/24 ảnh và 206 đối tượng**. Lượt đối chiếu sau sửa chưa ghi nhận lỗi còn lại trong mẫu:
 
-| Lỗi | Số | Ví dụ |
-|---|---:|---|
-| Sai lớp | 3 | img_008: ba xe đẩy hàng hai bánh bị gán three_wheeler |
-| Sai vị trí/kích thước | 2 | img_005 thiếu vai phải; img_010 thiếu dải mui xanh bên trái |
-| Bỏ sót | 1 | img_018: motorbike dưới người lái gần (418,495) |
+| Tiêu chí | Kết quả lượt kiểm tra lại | Ngưỡng |
+|---|---|---|
+| Ảnh có lỗi quan sát được | **0/8 = 0,0%** | ≤ 2% |
+| Đối tượng có lỗi quan sát được | **0/206 = 0,0%** | Chỉ số bổ sung, không thay mẫu số theo ảnh |
+| Bắt bẫy mới trước khi mở đáp án | **10/12 = 83,3%** | ≥ 80% |
 
-Không phát hiện lỗi thêm trong lượt QC ở img_003, img_009, img_021, img_035; điều đó không chứng minh ảnh hoàn toàn sạch. Cận trên Wilson 95% của tỉ lệ ảnh lỗi là **78%**; mẫu nhỏ, có chọn ca khó và cùng quy trình thực hiện nhãn lẫn QC nên không đại diện độc lập cho cả lô.
+**Quyết định: Release sau rework — 2026-11-17.** Đây là quyết định theo ngưỡng quan sát của lượt kiểm tra lại, được script đề xuất trong `qc/recheck/qc_report_auto.md`. Bản cuối `release/final_det.coco.json` có **24 ảnh, 571 hình = 559 vật + 12 ignore_region**. `labels/qc_fixed.json` chứa đủ 24 ảnh sau rà để dựng lại bản này; `batch_reviewed.json` vẫn là bản xuất đầu có 564 hình. Không sửa `taxonomy.json.rules` hoặc thay số của lượt đầu để đạt.
 
-Đã sửa 6 lỗi trong `labels/qc_fixed.json` (4 ảnh). `build_release.py` thay 4 ảnh này để tạo `release/final_det.coco.json`: **24 ảnh, 562 hình**, gồm 550 vật và 12 ignore_region. `batch_reviewed.json` vẫn là bản xuất CVAT lần đầu: 564 hình. Số QC trên đây thuộc bản trước sửa; không diễn giải thành tỉ lệ lỗi còn lại sau sửa.
-
-Script kiểm được cấu trúc COCO, số ảnh, lớp, biên ảnh và việc ghép box; không chứng minh box ôm sát vật, không tìm được mọi vật cùng bị bỏ sót, không xác nhận một người đã quét đủ 15 giây.
-
-**Quyết định: Rework — 2026-11-17.** Không có ảnh hỏng được ghi nhận; các quy tắc phát sinh đã được bổ sung nên không chọn Hold. Chưa chọn Release vì lượt đầu chỉ bắt 8/12 bẫy và QC phát hiện lỗi trên 4/8 ảnh. Các sửa cục bộ đã có, nhưng cần rà lại toàn lô, ưu tiên img_013, img_018, img_026, img_034, rồi QC độc lập trước khi đổi quyết định.
+**Giới hạn:** QC do cùng quy trình hỗ trợ thực hiện, chưa có người kiểm độc lập. Mẫu 8 ảnh đã được rà và có chọn ca khó nên không đại diện ngẫu nhiên độc lập cho cả lô. Với 0/8, cận trên Wilson 95% vẫn khoảng **32%**; kết quả không chứng minh tỉ lệ lỗi thật dưới 2%. Bộ bẫy mới cũng dùng ảnh đã quen và nhãn nền đã rà, nên bảng accepted 100% của lượt đó không phải số đo chất lượng detector. Hồ sơ lỗi mô hình vẫn lấy từ lượt đầu ở mục 2. Script kiểm được cấu trúc, số ảnh, lớp và biên ảnh, không tự chứng minh nhãn khớp hoàn toàn nội dung ảnh.
 
 ## 8. Ghi chú thực hiện
 
-Bài được thực hiện trên Windows 11, RTX 3050 Laptop 4 GB, torch 2.6.0+cu124 và CVAT v2.74.1 chạy Docker. Các detector chạy trực tiếp trên GPU; không dùng dự đoán trong `data/cache/` làm kết quả thay thế.
+Tôi triển khai bài trên Windows 11, RTX 3050 Laptop 4 GB, torch 2.6.0+cu124 và CVAT v2.74.1 chạy Docker. Detector được chạy trực tiếp trên GPU, không dùng `data/cache/` thay kết quả chạy.
 
-**Công cụ hỗ trợ:** Claude Code hỗ trợ chuẩn bị môi trường, chạy mô hình, đo mask và soạn nháp tài liệu; Codex hỗ trợ tạo nhãn tham chiếu từ ảnh gốc, xử lý nhãn qua CVAT, review batch, kiểm mẫu QC và chỉnh báo cáo. Việc kiểm tra gồm đối chiếu ảnh gốc với overlay, chạy `validate_labels.py`, `check_submission.py` và lấy số liệu bằng các script gốc.
+Tôi sử dụng công cụ hỗ trợ để chuẩn bị môi trường, chạy mô hình, tạo và chỉnh tọa độ nhãn, kiểm overlay và soạn tài liệu. Việc kiểm tra kết hợp đối chiếu ảnh gốc với nhãn, chạy `validate_labels.py`, `check_submission.py` và lấy số đo bằng các script. Bốn ảnh tham chiếu được tạo nhãn trước khi xem dự đoán detector, nhưng chưa có bộ gold gán tay độc lập để kiểm chứng; các mốc `time_log.csv` đo toàn quy trình xử lý và thao tác CVAT.
 
-**Giới hạn đánh giá:** bốn ảnh tham chiếu được tạo nhãn trước khi xem dự đoán detector, nhưng không phải gold gán tay độc lập. Thời gian trong `time_log.csv` gồm thao tác file và CVAT của quy trình hỗ trợ; không dùng để kết luận về tốc độ gán tay cá nhân. Lượt QC cũng chưa độc lập với lượt xử lý nhãn.
+Lượt đầu, lượt rà bổ sung và lượt kiểm tra lại được lưu riêng. Nhãn của bộ bẫy mới được chốt bằng SHA-256 trước khi chấm; hai bẫy lọt được sửa sau đó và không làm thay đổi điểm đã chốt. `qc/recheck/protocol.json` ghi seed, mốc chốt và dấu kiểm file; `qc/recheck/README.md` hướng dẫn đối chiếu. Tôi không sửa tay các thống kê sinh tự động.
 
-Các file thống kê sinh tự động được giữ nguyên. Bản review đầu và bản sửa QC được lưu riêng để đối chiếu. Qua kết quả bẫy và QC, phần cần cải thiện nhất là tìm vật chưa có box, phân biệt xe chở hàng và kiểm tra box trước khi chạy SAM. Bài giữ quyết định **Rework** cho đến khi hoàn thành lượt rà toàn lô và QC độc lập.
+Tôi bổ sung script áp dụng các chỉnh sửa đã ghi nhận, cho phép lưu QC ở thư mục riêng và yêu cầu phiếu QC đủ dữ liệu trước khi đề xuất Release. Các sửa này giúp giữ lịch sử từng lượt và tránh ghi đè kết quả đầu. Qua bài làm, phần cần chú ý nhất vẫn là tìm vật chưa có box, phân biệt xe chở hàng và kiểm box trước khi chạy SAM.

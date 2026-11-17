@@ -1,11 +1,11 @@
 image,object_id,error_type,reviewer,note
-img_003.jpg,,khong,Codex (OpenAI) - AI-assisted QC,Khong phat hien loi them trong lan QC nay.
-img_005.jpg,66,sai_vi_tri_kich_thuoc,Codex (OpenAI) - AI-assisted QC,Box person thieu vai ben phai; mo rong x2 tu 316.36 den 336.
-img_008.jpg,99,sai_lop,Codex (OpenAI) - AI-assisted QC,"Xe day ban hang hai banh, khong thay cum xe dap/xe may gan lien; khong thuoc three_wheeler."
-img_008.jpg,112,sai_lop,Codex (OpenAI) - AI-assisted QC,Xe day hai banh; loai khoi taxonomy thay vi suy doan banh thu ba.
-img_008.jpg,113,sai_lop,Codex (OpenAI) - AI-assisted QC,"Xe day chuoi hai banh; loai nhan three_wheeler, giu person nguoi ban."
-img_009.jpg,,khong,Codex (OpenAI) - AI-assisted QC,"Motorbike cho chuoi, nguoi va xe dap nen duoc tach; khong phat hien loi them."
-img_010.jpg,121,sai_vi_tri_kich_thuoc,Codex (OpenAI) - AI-assisted QC,Box cyclo thu hai thieu dai mui xanh nhin thay o ben trai; x1 302 -> 218.
-img_018.jpg,missing_M_410_494,bo_sot,Codex (OpenAI) - AI-assisted QC,"Thieu motorbike duoi nguoi lai gan (418,495), box [410,494,439,522]."
-img_021.jpg,,khong,Codex (OpenAI) - AI-assisted QC,SUV trang da la car; nguoi ngoi sau va nguoi lai duoc tach. Khong phat hien loi them.
-img_035.jpg,,khong,Codex (OpenAI) - AI-assisted QC,Xich lo chi con mot box gom mui va than. Khong phat hien loi them.
+img_003.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,Khong phat hien loi them trong lan QC nay.
+img_005.jpg,66,sai_vi_tri_kich_thuoc,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,Box person thieu vai ben phai; mo rong x2 tu 316.36 den 336.
+img_008.jpg,99,sai_lop,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,"Xe day ban hang hai banh, khong thay cum xe dap/xe may gan lien; khong thuoc three_wheeler."
+img_008.jpg,112,sai_lop,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,Xe day hai banh; loai khoi taxonomy thay vi suy doan banh thu ba.
+img_008.jpg,113,sai_lop,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,"Xe day chuoi hai banh; loai nhan three_wheeler, giu person nguoi ban."
+img_009.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,"Motorbike cho chuoi, nguoi va xe dap nen duoc tach; khong phat hien loi them."
+img_010.jpg,121,sai_vi_tri_kich_thuoc,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,Box cyclo thu hai thieu dai mui xanh nhin thay o ben trai; x1 302 -> 218.
+img_018.jpg,missing_M_410_494,bo_sot,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,"Thieu motorbike duoi nguoi lai gan (418,495), box [410,494,439,522]."
+img_021.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,SUV trang da la car; nguoi ngoi sau va nguoi lai duoc tach. Khong phat hien loi them.
+img_035.jpg,,khong,Quy trình kiểm nhãn có công cụ hỗ trợ - lượt đầu,Xich lo chi con mot box gom mui va than. Khong phat hien loi them.

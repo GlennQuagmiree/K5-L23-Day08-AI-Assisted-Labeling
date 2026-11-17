@@ -1,6 +1,6 @@
 # Báo cáo QC tự động (nháp)
 
-> **Gợi ý** do script tính; bạn xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.
+> **Gợi ý** do script tính từ phiếu kiểm; không tự xác minh độ đúng của nhãn hay tính độc lập của người kiểm.
 
 ## Mẫu
 - 8 ảnh (3 ca khó + 5 ngẫu nhiên), 213 đối tượng.
@@ -11,7 +11,7 @@
 |---|---|---|
 | Lỗi **theo đối tượng** | 6/213 = 2.8% | 213 đối tượng trong mẫu |
 | **Ảnh có lỗi** (dùng cho ngưỡng) | 4/8 = 50.0% | 8 ảnh trong mẫu |
-| Máy: accepted / edited / deleted | 429/505 = 85.0% / 22/505 = 4.4% / 50/505 = 9.9% | 505 box máy |
+| Máy: accepted / edited / deleted | 429/505 = 85.0% / 22/505 = 4.4% / 50/505 = 9.9% | 505 box nguồn |
 | Máy: added | 89/540 = 16.5% | 540 đối tượng sau duyệt |
 | Bắt lỗi bẫy | 8/12 = 66.7% | 12 bẫy |
 

@@ -1,0 +1,112 @@
+{
+  "img_008.jpg": [
+    {
+      "operation": "add",
+      "reason": "Người đội nón lá, áo hoa cạnh người đội mũ xanh bị thiếu nhãn.",
+      "class": "person",
+      "box": [
+        533,
+        207,
+        626,
+        332
+      ]
+    }
+  ],
+  "img_009.jpg": [
+    {
+      "operation": "update",
+      "reason": "Xe màu trắng có động cơ, yếm và yên xe máy; sửa bicycle thành motorbike.",
+      "id": 112,
+      "class": "motorbike"
+    }
+  ],
+  "img_010.jpg": [
+    {
+      "operation": "update",
+      "reason": "Người đạp xích lô áo trắng: box bị dịch xuống/phải, thiếu đầu và chân trái.",
+      "id": 122,
+      "box": [
+        252,
+        245,
+        438,
+        677
+      ]
+    }
+  ],
+  "img_017.jpg": [
+    {
+      "operation": "delete",
+      "reason": "Box truck nằm trên biển/khung nhà, không có xe tải.",
+      "id": 158
+    }
+  ],
+  "img_018.jpg": [
+    {
+      "operation": "add",
+      "reason": "Người lái xe áo tối phía phải dưới chưa có box riêng.",
+      "class": "person",
+      "box": [
+        819,
+        513,
+        848,
+        557
+      ]
+    }
+  ],
+  "img_024.jpg": [
+    {
+      "operation": "delete",
+      "reason": "Box motorbike trên mảng cây và công trình phía trái trên không tương ứng vật.",
+      "id": 360
+    }
+  ],
+  "img_025.jpg": [
+    {
+      "operation": "add",
+      "reason": "Người áo trắng cầm điện thoại phía phải chưa có nhãn person.",
+      "class": "person",
+      "box": [
+        809,
+        173,
+        901,
+        436
+      ]
+    }
+  ],
+  "img_026.jpg": [
+    {
+      "operation": "update",
+      "reason": "Box xe ở đầu hàng bên phải đặt cao trên thân xe; hạ và ôm phần thân/bánh nhìn thấy.",
+      "id": 381,
+      "box": [
+        818,
+        328,
+        864,
+        379
+      ]
+    }
+  ],
+  "img_031.jpg": [
+    {
+      "operation": "update",
+      "reason": "Người đàn ông ngồi bên phải là person, không phải bicycle.",
+      "id": 497,
+      "class": "person"
+    }
+  ],
+  "img_033.jpg": [
+    {
+      "operation": "delete",
+      "reason": "Box car bao biển hàng và khoảng trống phía trên mặt đường, không có ô tô.",
+      "id": 516
+    }
+  ],
+  "img_035.jpg": [
+    {
+      "operation": "update",
+      "reason": "Người mặc áo trắng đứng giữa ảnh là person, không phải bicycle.",
+      "id": 569,
+      "class": "person"
+    }
+  ]
+}

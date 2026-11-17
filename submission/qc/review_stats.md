@@ -3,7 +3,7 @@
 - Ảnh tính: 24 (batch,gold); box máy: 505; đối tượng sau duyệt: 540; ngưỡng accepted: IoU >= 0.9
 - Đã **loại 25 đối tượng nằm quanh các bẫy** khỏi bảng này: lỗi nhân tạo không phản ánh chất lượng máy.
 
-## 1. Bốn trạng thái (AI error profile)
+## 1. Bốn trạng thái (hồ sơ lỗi mô hình)
 | Trạng thái | Số | Tỉ lệ | Mẫu số |
 |---|---|---|---|
 | accepted (giữ nguyên) | 429 | 429/505 = 85.0% | 505 box máy |
