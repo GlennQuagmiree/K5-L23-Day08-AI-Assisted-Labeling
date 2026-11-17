@@ -1,23 +1,38 @@
-# Label contract — Phố châu Á — BỔ SUNG v1.1 — <<MSHV - Họ tên>>
+# Label contract — Phố châu Á — BỔ SUNG v1.1 — 2A202603271 - Hà Huy Dũng
 
-> **Chỉ viết phần thay đổi so với v1.0** (không copy cả file). Chốt các câu hỏi mở ở mục 6 của v1.0 (hoặc nói rõ câu nào chưa chốt, vì sao)
-> và thêm quy tắc mới rút ra từ lỗi của máy / lỗi của bạn. Mỗi ca khó **có ảnh ví dụ** (`img_0xx`) và khớp một dòng trong `qc/calibration_decisions.csv`.
+> Chỉ phần thay đổi so với v1.0 (`guideline/guideline_v1.0_label_contract.md`). Mỗi quy tắc có ảnh ví dụ và khớp một dòng trong `qc/calibration_decisions.csv`.
 
 ## 1. Câu hỏi mở đã chốt (từ mục 6 của v1.0)
 
 | # | Câu hỏi | Quyết định | Ảnh ví dụ | `case_id` |
 |---|---|---|---|---|
-| <<1>> | <<xe đạp điện: bicycle hay motorbike?>> | <<>> | <<img_0xx>> | <<CAL-01>> |
+| 4 | Người ngồi trong xe ba bánh có mui, chỉ thấy thấp thoáng: ngưỡng "còn thấy ≥ 20%" có hợp lý? | **Thay** ngưỡng % (khó ước lượng, chính tôi tick `can_review` 6 lần ở 2 ảnh) bằng tiêu chí nhìn được: gán `person` khi thấy rõ **đầu + ít nhất một phần vai/thân**; chỉ thấy tóc, tay, bóng mờ sau kính → không gán. | img_012 (3 người lái dưới mui), img_020 (người sau kính chắn gió) | CAL-01 |
+| 7 | Mức `conf` tối thiểu để chấp nhận box máy không cần sửa? | **Không đặt.** Box sai có conf cao (bán tải → truck 0.73) và box đúng có conf thấp (tuk-tuk → car 0.29). `conf` chỉ dùng để xếp thứ tự duyệt. | img_002, img_004 | CAL-06 |
+| 3 (mask) | Mask xe có gồm người / vật chạm vào không? | Mask `three_wheeler` **không gồm** người lái, khách và xe khác chạm vào. Với SAM: luôn thêm click âm lên người lái và lên vật chạm xe. | img_013 (`masks/tuktuk_img013_sam21_unionbox_2neg.jpg`) | CAL-07 |
 
-## 2. Ca khó mới (từ lỗi của máy, bẫy lọt, box `can_review`)
+Chưa chốt (không có ảnh ví dụ trong lô để quyết): câu 1 (xe đạp điện), câu 2 (khối xe máy đỗ dày **gần** camera), câu 5 (kính xe trong mask ô tô), câu 6 (box chồng ảnh đêm). Giữ theo v1.0 và tick `can_review` nếu gặp.
 
-| Ảnh | Tình huống | Máy làm gì (model nào) | Quyết định của bạn | Quy tắc mới (vào mục nào của v1.0) |
+## 2. Ca khó mới (từ lỗi của máy và box `can_review`)
+
+| Ảnh | Tình huống | Máy làm gì (model nào) | Quyết định | Quy tắc mới (vào mục nào của v1.0) |
 |---|---|---|---|---|
-| <<img_0xx>> | <<>> | <<>> | <<>> | <<>> |
+| img_036 | Người ngồi sau xe máy bị người lái che gần hết | YOLO26 thường bỏ sót | `person` riêng nếu thấy đầu (mũ) + một phần thân/chân | 4.1.4: người ngồi sau là `person` riêng, dùng tiêu chí CAL-01 (CAL-02) |
+| img_030, img_007, img_016, img_015 | Xe máy 2 bánh / xe đạp | YOLOE gọi `three_wheeler` conf 0.28–0.39 | `motorbike` / `bicycle` | Mục 2, cột "Không gồm" của `three_wheeler`: **xe máy 2 bánh có thùng sau, xe đạp chở hàng** (CAL-03) |
+| img_013, img_008, img_017 | Một tuk-tuk dài | YOLOE tách thành 2–3 box nửa xe; YOLO26 thêm `car` + `truck` chồng lên | Một box ôm cả mui + khoang + thân; xoá box nửa xe / trùng | 4.1.1: **một vật một box**, box phải chạm cả đầu và đuôi xe (CAL-04) |
+| img_002 | Xe bán tải | YOLO26 `truck` 0.73 | `car` | Bảng ca khó: ví dụ cho "bán tải = car" đã có ở mục 2 (CAL-05) |
+| img_004, img_017, img_023 | Tuk-tuk | YOLO26 `car` 0.29–0.39 | `three_wheeler` | Không đổi chữ (guideline đã đúng, lỗi máy); thêm ảnh ví dụ (CAL-05) |
+
+Bảng ca khó (mục 5 v1.0), thêm dòng:
+
+| Ca | Quyết định | Lý do |
+|---|---|---|
+| Người lái tuk-tuk dưới mui, thấy đầu + vai | `person` riêng, box phần nhìn thấy | CAL-01, img_012 |
+| Xe máy 2 bánh chở thùng hàng | `motorbike` | CAL-03, img_030 |
+| Máy ra 2 box cho một tuk-tuk | giữ một box ôm cả xe | CAL-04, img_013 |
 
 ## 3. Lịch sử thay đổi
 
 | Phiên bản | Thay đổi | Lý do (ca nào, `case_id`) |
 |---|---|---|
 | v1.0 | Bản giảng viên | — |
-| v1.1 | <<tóm tắt các thay đổi ở mục 1–2>> | <<>> |
+| v1.1 | Tiêu chí "đầu + vai" thay ngưỡng 20% (4.1.2, 4.1.4); "không gồm" xe máy có thùng cho `three_wheeler` (mục 2); "một vật một box" (4.1.1); mask không gồm người / vật chạm (4.2.4); không đặt ngưỡng conf tự chấp nhận (mục 3) | CAL-01 … CAL-07 |
